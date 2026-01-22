@@ -223,38 +223,34 @@ public class MyLinkedList<E> implements List<E> {
 
         if (targetIndex == -1) {
             return false;
-        } else {
-			this.remove(targetIndex);
-			return true;
-		}
-    }
-
-    @Override
-    public E remove(int index) {
-		Node nodeToRemove = this.getNode(index);
-
-        if (index == 0) {
+        } else if (targetIndex == 0) {
 			Node nodeToAppend = null;
             
-            if (index < this.size - 1) {
-                nodeToAppend = this.getNode(index + 1);
+            if (targetIndex < this.size - 1) {
+                nodeToAppend = this.getNode(targetIndex + 1);
             }
 
             this.head = nodeToAppend;
             this.size--;
-            return nodeToRemove.cargo;
+            return true;
         } else {
-            Node previousNode = this.getNode(index - 1);
+            Node previousNode = this.getNode(targetIndex - 1);
             Node nodeToAppend = null;
             
-            if (index < this.size - 1) {
-                nodeToAppend = this.getNode(index + 1);
+            if (targetIndex < this.size - 1) {
+                nodeToAppend = this.getNode(targetIndex + 1);
             }
 
             previousNode.next = nodeToAppend;
             this.size--;
-            return nodeToRemove.cargo;
+            return true;
         }
+    }
+
+    @Override
+    public E remove(int index) {
+        // TODO: fill this in
+        return null;
     }
 
     @Override

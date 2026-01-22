@@ -85,17 +85,13 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        this.size++;
-
+        Node targetNode = this.getNode(index - 1);
         Node nodeToAppend = this.getNode(index);
 
-        if (index == 0) {
-            this.head = new Node(element, nodeToAppend);
-        } else {
-            Node targetNode = this.getNode(index - 1);
+        Node newNode = new Node(element);
+        targetNode.next = newNode;
 
-            targetNode.next = new Node(element, nodeToAppend);
-        }
+        newNode.next = nodeToAppend;
     }
 
     @Override
@@ -219,42 +215,14 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(Object obj) {
-        int targetIndex = this.indexOf(obj);
-
-        if (targetIndex == -1) {
-            return false;
-        } else {
-			this.remove(targetIndex);
-			return true;
-		}
+        // TODO: fill this in
+        return false;
     }
 
     @Override
     public E remove(int index) {
-		Node nodeToRemove = this.getNode(index);
-
-        if (index == 0) {
-			Node nodeToAppend = null;
-            
-            if (index < this.size - 1) {
-                nodeToAppend = this.getNode(index + 1);
-            }
-
-            this.head = nodeToAppend;
-            this.size--;
-            return nodeToRemove.cargo;
-        } else {
-            Node previousNode = this.getNode(index - 1);
-            Node nodeToAppend = null;
-            
-            if (index < this.size - 1) {
-                nodeToAppend = this.getNode(index + 1);
-            }
-
-            previousNode.next = nodeToAppend;
-            this.size--;
-            return nodeToRemove.cargo;
-        }
+        // TODO: fill this in
+        return null;
     }
 
     @Override
